@@ -1,0 +1,14 @@
+# flaskful goodness
+Flask
+Flask-PyMongo
+Flask-RESTful
+
+# uwsgi for fast reverse proxy
+uWSGI
+ujson
+
+# numpy + sparsesvd and dependencies -> data science
+numpy
+scipy
+cython
+sparsesvd

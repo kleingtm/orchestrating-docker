@@ -1,24 +1,15 @@
 server {
 
     listen 80;
-    server_name 192.168.90.100;
-    #charset utf-8;
+    #server_name 192.168.90.100;
+    charset utf-8;
 
-    # reverse-proxy to nodejs-api -> comes before static files and includes "break;"
-    location /tk {
-        return 200 'gangnam style!';
-        #root /flask-api; # corresponds to COPY in flask dockerfile
+    #root /app;
+    index index.html index.htm index.php;
+
+    location ^~/flask-api{
+        uwsgi_pass flask-api:5000;
         include uwsgi_params;
-        uwsgi_pass 0.0.0.0:3031;
-        #uwsgi_pass unix:///flask-api/uwsgi.sock;
         break;
-    }
-
-    # static
-    location / {
-            index index.html index.htm index.php;
-            include /etc/nginx/mime.types;
-            autoindex  on;
-            error_page 404 = @add_hash;
     }
 }

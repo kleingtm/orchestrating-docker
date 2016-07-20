@@ -5,10 +5,11 @@ users = Blueprint('users', __name__)
 
 @user.route('/flask-api/user')
 def user_fn():
-    print(' * HELLO USER!!! * ')
+    print(' * HELLO USER from users.py !!! * ')
     return "Hey single user!"
 
 
 @users.route('/flask-api/users')
 def users_fn():
+    print(' * HELLO MULTIPLE USERS from users.py !!! * ')
     return "Hey multiple users!"

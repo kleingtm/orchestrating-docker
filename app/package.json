@@ -1,0 +1,25 @@
+{
+  "name": "docker-nginx-node-python",
+  "version": "1.0.0",
+  "description": "Docker-compose multi-container web boilerplate. Stack: MongoDB, uWSGI (reverse-proxy), Flask, NodeJS, AngularJS, Nginx.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/kleingtm/docker-nginx-node-python.git"
+  },
+  "keywords": [
+    "Docker",
+    "MongoDB",
+    "uWSGI",
+    "Flask",
+    "NodeJS",
+    "AngularJS",
+    "Nginx"
+  ],
+  "author": "Tom Kleingers",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/kleingtm/docker-nginx-node-python#readme"
+}

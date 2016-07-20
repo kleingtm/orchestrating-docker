@@ -1,37 +1,39 @@
 flask-api:
-  restart: always
+  restart: on-failure:10
   build: ./flask-api
   expose:
-    - "80"
-  links:
-    - mongo:mongo
-  volumes:
-    - /flask-api/
+    - "8000"
+#  links:
+#    - mongo:mongo
   env_file: .env
-  command: /usr/local/bin/uwsgi --ini /flask-api/uwsgi.ini
+  command: uwsgi --ini /flask-api/uwsgi.ini
+  volumes:
+    - /flask-api
+    - /usr/src/app
+    - /var/log/uwsgi
+  container_name: flask-api
 
 nginx:
   restart: always
   build: ./nginx/
   ports:
     - "80:80"
-  volumes:
-  - /usr/local/bin/uwsgi
   volumes_from:
-    - flask-api
-  links:
-    - flask-api:flask-api
+  - flask-api
+  container_name: nginx
 
-data:
-  image: mongo:latest
-  volumes:
-    - /var/lib/mongo
-  command: "true"
-
-mongo:
-  restart: always
-  image: mongo:latest
-  volumes_from:
-    - data
-  ports:
-    - "5432:5432"
+#data:
+#  image: mongo:latest
+#  volumes:
+#    - /var/lib/mongo
+#  command: "true"
+#  container_name: mongo-data
+#
+#mongo:
+#  restart: always
+#  image: mongo:latest
+#  volumes_from:
+#    - data
+#  ports:
+#    - "5432:5432"
+#  container_name: mongo

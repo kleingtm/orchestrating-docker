@@ -1,8 +1,9 @@
 from flask import Flask
-from flask.ext.pymongo import PyMongo
-from flask.ext.restful import Api, Resource
+from flask_pymongo import PyMongo
+from flask_restful import Api, Resource
 from users import user, users
 
+print(' * HELLO UWSGI!!! * ')
 
 # configure flask app, rest api, and mongodb (pymongo)
 app = Flask(__name__)

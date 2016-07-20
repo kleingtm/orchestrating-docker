@@ -5,6 +5,7 @@ users = Blueprint('users', __name__)
 
 @user.route('/flask-api/user')
 def user_fn():
+    print(' * HELLO USER!!! * ')
     return "Hey single user!"
 
 
